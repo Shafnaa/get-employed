@@ -1,6 +1,10 @@
+import "./globals.css";
+
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "./globals.css";
+
+import { ThemeProvider } from "@/components/providers";
+import { TailwindIndicator } from "@/components/tailwind-indicator";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,7 +32,18 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+          enableColorScheme
+        >
+          <div className="relative flex min-h-svh flex-col bg-background">
+            {children}
+          </div>
+          <TailwindIndicator />
+        </ThemeProvider>
       </body>
     </html>
   );
