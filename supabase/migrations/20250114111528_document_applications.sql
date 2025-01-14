@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS document_applications (
-    application_id BIGINT REFERENCES applications ON DELETE CASCADE NOT NULL,
-    document_id BIGINT REFERENCES documents ON DELETE CASCADE NOT NULL,
+    application_id UUID REFERENCES applications ON DELETE CASCADE NOT NULL,
+    document_id UUID REFERENCES documents ON DELETE CASCADE NOT NULL,
     PRIMARY KEY (application_id, document_id)
 );
 
