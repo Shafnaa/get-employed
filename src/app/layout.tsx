@@ -2,9 +2,11 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import { ThemeProvider } from "@/components/providers";
 import { TailwindIndicator } from "@/components/tailwind-indicator";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -42,7 +44,9 @@ export default function RootLayout({
           <div className="relative flex min-h-svh flex-col bg-background">
             {children}
           </div>
+          <Toaster />
           <TailwindIndicator />
+          <ReactQueryDevtools initialIsOpen={false} />
         </ThemeProvider>
       </body>
     </html>
