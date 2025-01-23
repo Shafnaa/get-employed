@@ -4,6 +4,8 @@ CREATE TABLE IF NOT EXISTS document_applications (
     PRIMARY KEY (application_id, document_id)
 );
 
+ALTER TABLE document_applications ENABLE ROW LEVEL SECURITY;
+
 CREATE POLICY "Individuals can create new Document Applications." ON document_applications FOR
 INSERT
     TO authenticated

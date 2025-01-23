@@ -1,9 +1,10 @@
 CREATE TABLE IF NOT EXISTS applications (
-    id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-    user_id UUID REFERENCES auth.users ON DELETE CASCADE DEFAULT auth.uid() NOT NULL,
-    work_type_id SMALLINT REFERENCES work_types NOT NULL,
+    id UUID DEFAULT gen_random_uuid () PRIMARY KEY,
+    user_id UUID REFERENCES auth.users ON DELETE CASCADE DEFAULT auth.uid () NOT NULL,
     city_id BIGINT REFERENCES cities NOT NULL,
     status_id BIGINT REFERENCES status NOT NULL,
+    company_id BIGINT REFERENCES companies NOT NULL,
+    work_type_id SMALLINT REFERENCES work_types NOT NULL,
     experience_level_id SMALLINT REFERENCES experience_levels NOT NULL,
     title TEXT NOT NULL CHECK (char_length(title) > 3),
     description TEXT NOT NULL CHECK (char_length(description) > 3),
