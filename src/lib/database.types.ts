@@ -37,10 +37,11 @@ export type Database = {
       applications: {
         Row: {
           city_id: number
+          company_id: number
           created_at: string
           description: string
           experience_level_id: number
-          id: number
+          id: string
           status_id: number
           title: string
           updated_at: string
@@ -49,22 +50,24 @@ export type Database = {
         }
         Insert: {
           city_id: number
+          company_id: number
           created_at?: string
           description: string
           experience_level_id: number
-          id?: number
+          id?: string
           status_id: number
           title: string
           updated_at?: string
-          user_id: string
+          user_id?: string
           work_type_id: number
         }
         Update: {
           city_id?: number
+          company_id?: number
           created_at?: string
           description?: string
           experience_level_id?: number
-          id?: number
+          id?: string
           status_id?: number
           title?: string
           updated_at?: string
@@ -77,6 +80,13 @@ export type Database = {
             columns: ["city_id"]
             isOneToOne: false
             referencedRelation: "cities"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "applications_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
             referencedColumns: ["id"]
           },
           {
@@ -186,16 +196,16 @@ export type Database = {
       }
       document_applications: {
         Row: {
-          application_id: number
-          document_id: number
+          application_id: string
+          document_id: string
         }
         Insert: {
-          application_id: number
-          document_id: number
+          application_id: string
+          document_id: string
         }
         Update: {
-          application_id?: number
-          document_id?: number
+          application_id?: string
+          document_id?: string
         }
         Relationships: [
           {
@@ -234,7 +244,7 @@ export type Database = {
           created_at: string
           document_type_id: number
           document_url: string
-          id: number
+          id: string
           title: string
           updated_at: string
           user_id: string
@@ -243,16 +253,16 @@ export type Database = {
           created_at?: string
           document_type_id: number
           document_url: string
-          id?: number
+          id?: string
           title: string
           updated_at?: string
-          user_id: string
+          user_id?: string
         }
         Update: {
           created_at?: string
           document_type_id?: number
           document_url?: string
-          id?: number
+          id?: string
           title?: string
           updated_at?: string
           user_id?: string
@@ -299,32 +309,32 @@ export type Database = {
       }
       todos: {
         Row: {
-          application_id: number
+          application_id: string
           created_at: string
-          description: string
-          due_date: string
-          id: number
-          status: boolean
+          description: string | null
+          due_date: string | null
+          id: string
+          status: boolean | null
           title: string
           updated_at: string
         }
         Insert: {
-          application_id: number
+          application_id: string
           created_at?: string
-          description: string
-          due_date: string
-          id?: number
-          status?: boolean
+          description?: string | null
+          due_date?: string | null
+          id?: string
+          status?: boolean | null
           title: string
           updated_at?: string
         }
         Update: {
-          application_id?: number
+          application_id?: string
           created_at?: string
-          description?: string
-          due_date?: string
-          id?: number
-          status?: boolean
+          description?: string | null
+          due_date?: string | null
+          id?: string
+          status?: boolean | null
           title?: string
           updated_at?: string
         }
